@@ -1,0 +1,20 @@
+class Solution:
+    def myAtoi(self, s: str) -> int:
+        res, num = '', '0123456789'
+        for i in s:
+            if i == ' ' and len(res) == 0: continue
+            if i != ' ' and (i in '-+' or i in num) and len(res) == 0:
+                res += i
+            elif i in num:
+                res += i
+            else:
+                break
+        if res == '' or res in '+-':
+            return 0
+        else:
+            if int(res) < -2 ** 31:
+                return -2 ** 31
+            elif int(res) > 2 ** 31 - 1:
+                return 2 ** 31 - 1
+            else:
+                return int(res)
