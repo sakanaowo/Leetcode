@@ -1,0 +1,16 @@
+class Solution:
+    def combinationSum(self, candidates: List[int], target: int) -> List[List[int]]:
+        save = []
+
+        def dewy(current, index, vector):
+            if current == 0:
+                save.append(vector)
+                return
+            elif current < 0:
+                return
+            for i in range(index, len(candidates)):
+                dewy(current - candidates[i], i, vector + [candidates[i]])
+
+        dewy(target, 0, [])
+
+        return save
