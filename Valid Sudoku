@@ -1,0 +1,48 @@
+from math import *
+from itertools import *
+from collections import *
+from functools import *
+import sys
+from typing import *
+
+MAX = int(1e18)
+
+
+class Solution:
+    def isValidSudoku(self, board: List[List[str]]) -> bool:
+        def checkCR(x):
+            col, row = {}, {}
+            for i in range(9):
+                a, b = board[i][x], board[x][i]
+                if a != '.':
+                    col[a] = col.get(a, 0) + 1
+                    if col[a] > 1: return False
+                if b != '.':
+                    row[b] = row.get(b, 0) + 1
+                    if row[b] > 1: return False
+            return True
+
+        def checkBox(x, y):
+            buax = {}
+            for i in [-1, 0, 1]:
+                for j in [-1, 0, 1]:
+                    a = board[x + i][y + j]
+                    if a != '.':
+                        buax[a] = buax.get(a, 0) + 1
+                        if buax[a] > 1: return False
+            return True
+
+        for i in range(9):
+            if not checkCR(i): return False
+        for i in [1, 4, 7]:
+            for j in [1, 4, 7]:
+                if not checkBox(i, j): return False
+        return True
+
+
+x = Solution()
+print(x.isValidSudoku([["8", "3", ".", ".", "7", ".", ".", ".", "."], ["6", ".", ".", "1", "9", "5", ".", ".", "."],
+                       [".", "9", "8", ".", ".", ".", ".", "6", "."], ["8", ".", ".", ".", "6", ".", ".", ".", "3"],
+                       ["4", ".", ".", "8", ".", "3", ".", ".", "1"], ["7", ".", ".", ".", "2", ".", ".", ".", "6"],
+                       [".", "6", ".", ".", ".", ".", "2", "8", "."], [".", ".", ".", "4", "1", "9", ".", ".", "5"],
+                       [".", ".", ".", ".", "8", ".", ".", "7", "9"]]))
