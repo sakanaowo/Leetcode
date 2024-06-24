@@ -1,0 +1,7 @@
+class Solution:
+    def searchRange(self, nums: List[int], target: int) -> List[int]:
+        if (target not in set(nums)) or not set(nums): return [-1, -1]
+        i, j = 0, len(nums) - 1
+        while nums[i] != target: i += 1
+        while nums[j] != target: j -= 1
+        return [i, j]
