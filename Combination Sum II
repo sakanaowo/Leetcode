@@ -1,0 +1,46 @@
+#include <bits/stdc++.h>
+#define 
+#define pb push_back
+using namespace std;
+
+class Solution {
+  public:
+
+    vector<vector<int>> combinationSum2(vector<int>& candidates, int target) {
+        sort(candidates.begin(),candidates.end());
+        vector<vector<int>> res;
+        vector<int> comb;
+        this->dewy(candidates,target,0,res,comb);
+        return res;
+    }
+
+  private:
+    void dewy(vector<int>& candidates,int target, int ind,vector<vector<int>>& res,vector<int>& comb) {
+        if(target==0) {
+            res.pb(comb);
+            return;
+        }
+        for(int i=ind; i<candidates.size(); i++) {
+            if(i>ind && candidates[i]==candidates[i-1])continue;
+            if(candidates[i]<=target) {
+                comb.pb(candidates[i]);
+                dewy(candidates,target-candidates[i],i+1,res,comb);
+                comb.pop_back();
+            }
+        }
+    }
+
+};
+
+int main() {
+    ios_base::sync_with_stdio(false);
+    cin.tie(NULL);
+    Solution X;
+    vector<int> candidates = {10, 1, 2, 7, 6, 1, 5};
+    vector<vector<int>> r = X.combinationSum2(candidates, 8);
+
+    for(auto x:r) {
+        for(auto i:x) cout<<i<<' ';
+        cout<<endl;
+    }
+}
