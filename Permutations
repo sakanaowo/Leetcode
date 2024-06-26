@@ -1,0 +1,16 @@
+class Solution {
+  public:
+    vector<vector<int>> permute(vector<int>& nums) {
+        vector<vector<int>> res;
+        vector<int> num(nums.size());
+        iota(num.begin(),num.end(),0);
+        do {
+            vector<int> tmp;
+            for(int i=0; i<num.size(); i++) {
+                tmp.push_back(nums[num[i]]);
+            }
+            res.push_back(tmp);
+        } while(next_permutation(num.begin(),num.end()));
+        return res;
+    }
+};
