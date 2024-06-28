@@ -1,0 +1,14 @@
+class Solution {
+public:
+    bool canJump(vector<int> &nums) {
+        int g = 0;
+        for (auto i: nums) {
+            if (g < 0) return false;
+            else if (i > g) {
+                g = i;
+            }
+            g--;
+        }
+        return true;
+    }
+};
