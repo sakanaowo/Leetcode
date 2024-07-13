@@ -1,0 +1,17 @@
+class Solution:
+    def rob(self, nums: List[int]) -> int:
+        def f(index, dp):
+            if index == 0: return nums[index]  # base case
+            if index < 0: return 0
+
+            if dp[index] != -1: return dp[index]
+
+            take = nums[index] + f(index - 2, dp)
+            not_take = f(index - 1, dp)
+
+            dp[index] = max(take, not_take)
+            return dp[index]
+
+        n = len(nums)
+        dp = [(-1) for _ in range(n)]
+        return f(n - 1, dp)
