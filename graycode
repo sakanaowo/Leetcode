@@ -1,0 +1,14 @@
+class Solution:
+    def grayCode(self, n: int) -> List[int]:
+        def gray(n):
+            if n == 0: return ['0']
+            if n == 1: return ['0', '1']
+
+            prev = gray(n - 1)
+
+            first = ['0' + code for code in prev]
+            second = ['1' + code for code in reversed(prev)]
+            return first + second
+
+        return [int(i,2) for i in gray(n)]
+
