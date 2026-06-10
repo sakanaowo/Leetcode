@@ -25,5 +25,5 @@ foreach(SOURCE_FILE IN LISTS PROBLEM_SOURCES)
     string(REGEX REPLACE "[^A-Za-z0-9_]" "_" TARGET_NAME "${TARGET_NAME}")
 
     add_executable("${TARGET_NAME}" "${SOURCE_FILE}"
-            codeptit/CPP0743.cpp)
+            codeptit/CPP0216.cpp)
 endforeach()
