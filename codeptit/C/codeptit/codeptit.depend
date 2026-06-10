@@ -1,0 +1,8 @@
+# depslib dependency file v1.0
+1783432039 source:/home/sakana/Code/Leetcode/codeptit/C/codeptit/main.c
+	<stdlib.h>
+	<stdio.h>
+	<math.h>
+	<stdbool.h>
+	<string.h>
+
