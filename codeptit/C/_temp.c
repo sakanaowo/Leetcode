@@ -85,6 +85,31 @@ bool isPrime(int n) {
 //     for (int i = start; i <= 9; i++) gen(current * 10 + i, i, cnt+1, n);
 // }
 
+int partition(int a[], int left, int right) {
+    int pivot = a[right];
+    int i = left - 1;
+
+    for (int j = left; j < right; j++) {
+        if (a[j] <= pivot) {
+            i++;
+            swap(a[i], a[j]);
+        }
+    }
+
+    swap(a[i + 1], a[right]);
+    return i + 1;
+}
+
+void quickSort(int a[], int left, int right) {
+    if (left < right) {
+        int p = partition(a, left, right);
+
+        quickSort(a, left, p - 1);
+        quickSort(a, p + 1, right);
+    }
+}
+
+
 void toLower(char s[]) {
     for (int i = 0; s[i] != '\0'; i++) {
         s[i] = tolower(s[i]);
@@ -100,11 +125,16 @@ bool palindrome(char s[]) {
 }
 
 void solve() {
+    char a[50];
+    scanf("%s", a);
+    if (!(a[0]))
+    if (palindrome(a)) {}
+    printf("\n");
 }
 
 int main() {
     // sieve();
     // _fi_();
     read();
-    solve();
+    _init_ solve();
 }

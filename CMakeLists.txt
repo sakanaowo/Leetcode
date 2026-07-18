@@ -33,7 +33,8 @@ foreach(SRC IN LISTS ALL_SOURCES)
             codeptit/C/C01038.c
             codeptit/C/C01039.c
             codeptit/C/C01043.c
-            codeptit/C/_temp.c)
+            codeptit/C/_temp.c
+            codeptit/C/trash.c)
 
     # chỉ link math cho C
     if(SRC MATCHES "\\.c$")
